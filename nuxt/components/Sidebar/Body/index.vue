@@ -11,9 +11,7 @@
     </div>
     <nav class="flex flex-1 flex-col">
       <ul role="list" class="flex flex-1 flex-col gap-y-7">
-        <SidebarBodyClasses :classes="classes" />
-        <SidebarBodySessions :sessions="sessions" />
-        <SidebarBodyTickets :tickets="tickets" />
+        <SidebarBodyGroups :groups="groups" />
         <SidebarBodyUser :userAuthor="userAuthor" />
       </ul>
     </nav>
@@ -22,9 +20,7 @@
 
 <script setup>
 const props = defineProps({
-  classes: Object,
-  sessions: Object,
-  tickets: Object,
+  groups: Object,
   userAuthor: Object,
 });
 </script>

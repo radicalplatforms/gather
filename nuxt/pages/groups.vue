@@ -109,6 +109,7 @@
 import { ChatBubbleLeftIcon, CheckCircleIcon } from '@heroicons/vue/24/outline'
 
 const route = useRoute();
+const config = useRuntimeConfig();
 
 definePageMeta({
   layout: "dash",
