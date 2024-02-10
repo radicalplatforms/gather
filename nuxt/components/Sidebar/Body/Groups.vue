@@ -2,13 +2,12 @@
   <li>
     <div class="text-xs font-semibold leading-6 text-accent">Groups</div>
     <ul role="list" class="-mx-2 mt-2 space-y-1">
-      <li v-for="item in classes" :key="item.data.Title">
+      <li v-for="item in groups" :key="item.name">
         <SidebarBodyButton
           :icon="FolderIcon"
-          :title="item.data.Number"
-          :desc="item.data.Title"
-          :url="'/class/' + item.data.ref"
-          :current="route.path === '/class/' + item.data.ref"
+          :title="item.name"
+          :url="'/groups/' + item.id"
+          :current="route.path === '/groups/' + item.id"
         />
       </li>
       <li>
@@ -16,7 +15,7 @@
           :icon="SquaresPlusIcon"
           title="Create Group"
           :url="'/class/create'"
-          :current="route.path === '/class/create'"
+          :current="route.path === '/groups/create'"
         />
       </li>
     </ul>
@@ -27,7 +26,7 @@
 import { FolderIcon, SquaresPlusIcon } from "@heroicons/vue/24/outline";
 
 const props = defineProps({
-  classes: Object,
+  groups: Object,
 });
 const route = useRoute();
 </script>
