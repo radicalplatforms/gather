@@ -55,6 +55,9 @@
           Make friend group coordination easy.
         </h1>
         <p class="mt-6 text-lg leading-8 text-accent">
+           Ditch the group chat ping-pong. Gather empowers friend groups to coordinate meetups and experience Chicago-wide events.
+        </p>
+        <p class="mt-2 text-lg leading-8 text-accent">
           Life gets busy. Making time and decisions to recreate is not a trivial task for a variety of reasons. Most of us have busy schedules and exhausting occupations. Who has time or energy to plan and organize events -- and do so without creating conflicts?
         </p>
         <div class="mt-10 flex items-center gap-x-6">
