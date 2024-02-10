@@ -1,0 +1,23 @@
+name = "gather-hono"
+account_id = "287572e2291030d8c5e360fcc593a16b"
+compatibility_date = "2024-02-01"
+
+d1_databases = [
+    { binding = "DB", database_name = "dev-gather-hono-db", database_id = "73771ecc-6804-4c6a-9f02-0b2c966386d8", migrations_dir = "drizzle" }
+]
+
+[env.stage]
+routes = [
+    { pattern = "api.stage.gather.radison.io", custom_domain = true }
+]
+d1_databases = [
+    { binding = "DB", database_name = "stage-gather-hono-db", database_id = "0c7ad95c-44a9-4065-b34e-6f0e7f3cf4ce", migrations_dir = "drizzle" }
+]
+
+[env.production]
+routes = [
+    { pattern = "api.gather.radison.io", custom_domain = true }
+]
+d1_databases = [
+    { binding = "DB", database_name = "prod-gather-hono-db", database_id = "e55a712b-0465-4543-92b8-b971f706de09", migrations_dir = "drizzle" }
+]

@@ -1,0 +1,50 @@
+name: Hono Cloudflare Deploy Stage
+
+on:
+  pull_request:
+    branches: main
+
+jobs:
+  nuxt:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 18 ]
+
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: hono
+
+      - name: Migrate D1
+        id: migrate
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: d1 migrations apply stage-gather-hono-db --env stage
+          workingDirectory: hono
+
+      - name: Deploy Hono
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: deploy src/index.ts --env stage
+          workingDirectory: hono
+
+#      - name: Rollback D1
+#        if: ${{ failure() && steps.migrate.conclusion == 'success' && steps.deploy.conclusion == 'failure' }}
+#        uses: cloudflare/wrangler-action@v3
+#        with:
+#          apiToken: ${{ secrets.CF_API_TOKEN }}
+#          command: d1 migrations # TODO NEED ROLLBACK FEATURE
+#          workingDirectory: hono

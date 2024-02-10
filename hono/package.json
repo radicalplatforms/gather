@@ -1,0 +1,45 @@
+{
+  "name": "gather-hono",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "scripts": {
+    "wrdev": "wrangler dev src/index.ts",
+    "wrstage": "wrangler deploy src/index.ts --env stage",
+    "wrprod": "wrangler deploy src/index.ts --env production",
+    "wrdev-migrate": "npm run wrdev-migrate-local && npm run wrdev-migrate-remote",
+    "wrdev-migrate-local": "wrangler d1 migrations apply dev-gather-hono-db --local",
+    "wrdev-migrate-remote": "wrangler d1 migrations apply dev-gather-hono-db",
+    "wrstage-migrate": "wrangler d1 migrations apply stage-gather-hono-db --env stage",
+    "wrprod-migrate": "wrangler d1 migrations apply prod-gather-hono-db --env production",
+    "generate": "drizzle-kit generate:sqlite --schema=src/schema.ts",
+    "test": "jest test",
+    "format": "prettier --write . && eslint --fix .",
+    "check-prettier": "prettier --check .",
+    "check-eslint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@hono/eslint-config": "^0.0.4",
+    "@hono/zod-validator": "^0.1.11",
+    "drizzle-kit": "^0.19.13",
+    "drizzle-orm": "^0.28.6",
+    "drizzle-zod": "^0.5.1",
+    "hono": "^3.12.3",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20231025.0",
+    "@types/jest": "^29.5.11",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-drizzle": "^0.2.3",
+    "jest": "^29.7.0",
+    "prettier": "3.2.4",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3",
+    "wrangler": "^3.26.0"
+  },
+  "resolveJsonModule": true
+}
