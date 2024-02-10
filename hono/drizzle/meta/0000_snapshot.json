@@ -170,12 +170,8 @@
           "name": "users_to_group_events_authorUsername_users_authorUsername_fk",
           "tableFrom": "users_to_group_events",
           "tableTo": "users",
-          "columnsFrom": [
-            "authorUsername"
-          ],
-          "columnsTo": [
-            "authorUsername"
-          ],
+          "columnsFrom": ["authorUsername"],
+          "columnsTo": ["authorUsername"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -183,12 +179,8 @@
           "name": "users_to_group_events_event_id_events_id_fk",
           "tableFrom": "users_to_group_events",
           "tableTo": "events",
-          "columnsFrom": [
-            "event_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["event_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -196,23 +188,15 @@
           "name": "users_to_group_events_group_id_groups_id_fk",
           "tableFrom": "users_to_group_events",
           "tableTo": "groups",
-          "columnsFrom": [
-            "group_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["group_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
         "users_to_group_events_authorUsername_event_id_group_id_pk": {
-          "columns": [
-            "authorUsername",
-            "event_id",
-            "group_id"
-          ]
+          "columns": ["authorUsername", "event_id", "group_id"]
         }
       },
       "uniqueConstraints": {}
@@ -249,12 +233,8 @@
           "name": "users_to_groups_authorUsername_users_authorUsername_fk",
           "tableFrom": "users_to_groups",
           "tableTo": "users",
-          "columnsFrom": [
-            "authorUsername"
-          ],
-          "columnsTo": [
-            "authorUsername"
-          ],
+          "columnsFrom": ["authorUsername"],
+          "columnsTo": ["authorUsername"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -262,22 +242,15 @@
           "name": "users_to_groups_group_id_groups_id_fk",
           "tableFrom": "users_to_groups",
           "tableTo": "groups",
-          "columnsFrom": [
-            "group_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["group_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
         "users_to_groups_authorUsername_group_id_pk": {
-          "columns": [
-            "authorUsername",
-            "group_id"
-          ]
+          "columns": ["authorUsername", "group_id"]
         }
       },
       "uniqueConstraints": {}
