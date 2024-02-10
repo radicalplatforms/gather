@@ -1,0 +1,43 @@
+name: Nuxt Deploy Production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  nuxt:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ 18 ]
+
+    env:
+      NUXT_DIR: nuxt
+
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nuxt Dependencies
+        run: npm i
+        working-directory: ${{ env.NUXT_DIR }}
+
+      - name: Build Nuxt
+        run: npm run build
+        working-directory: ${{ env.NUXT_DIR }}
+        env:
+          NITRO_PRESET: cloudflare
+
+      - name: Publish Nuxt to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: deploy --env production
+          workingDirectory: ${{ env.NUXT_DIR }}

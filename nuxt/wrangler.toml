@@ -1,0 +1,20 @@
+name = "gather-nuxt"
+main = ".output/server/index.mjs"
+account_id = "287572e2291030d8c5e360fcc593a16b"
+compatibility_date = "2024-01-19"
+
+[build]
+command = "true"
+
+[site]
+bucket = ".output/public"
+
+[env.stage]
+routes = [
+    { pattern = "stage.gather.radison.io", custom_domain = true }
+]
+
+[env.production]
+routes = [
+    { pattern = "gather.radison.io", custom_domain = true },
+]
