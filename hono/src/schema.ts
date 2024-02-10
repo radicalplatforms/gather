@@ -13,7 +13,7 @@ export const events = sqliteTable('events', {
   image: text('image'),
   startDate: text('start_date'),
   endDate: text('end_date'),
-  isCustom: integer('is_custom', { mode: 'boolean' }),
+  isCustom: integer('is_custom', { mode: 'boolean' }).default(true),
   created: text('created').default(sql`CURRENT_TIMESTAMP`),
 })
 
@@ -26,11 +26,12 @@ export const eventsRelations = relations(events, ({ many }) => ({
  */
 export const groups = sqliteTable('groups', {
   id: integer('id').primaryKey(),
-  name: integer('name').notNull(),
+  name: text('name').notNull(),
 })
 
 export const groupsRelations = relations(groups, ({ many }) => ({
-  usersToGroupEvents: many(usersToGroupEvents),
+  users: many(usersToGroups),
+  usersToEvents: many(usersToGroupEvents),
 }))
 
 /**
@@ -41,7 +42,40 @@ export const users = sqliteTable('users', {
 })
 
 export const usersRelations = relations(users, ({ many }) => ({
+  usersToGroups: many(usersToGroups),
   usersToGroupEvents: many(usersToGroupEvents),
+}))
+
+/**
+ * Users to Groups
+ */
+export const usersToGroups = sqliteTable(
+  'users_to_groups',
+  {
+    authorUsername: text('authorUsername')
+      .notNull()
+      .references(() => users.authorUsername),
+    groupId: integer('group_id')
+      .notNull()
+      .references(() => groups.id),
+    isOwner: integer('is_owner', { mode: 'boolean' }).default(false),
+  },
+  (table) => {
+    return {
+      pk: primaryKey(table.authorUsername, table.groupId),
+    }
+  }
+)
+
+export const usersToGroupsRelations = relations(usersToGroups, ({ one }) => ({
+  user: one(users, {
+    fields: [usersToGroups.authorUsername],
+    references: [users.authorUsername],
+  }),
+  group: one(groups, {
+    fields: [usersToGroups.groupId],
+    references: [groups.id],
+  }),
 }))
 
 /**
@@ -65,7 +99,7 @@ export enum votingEnum {
 export const usersToGroupEvents = sqliteTable(
   'users_to_group_events',
   {
-    authorUsername: integer('authorUsername')
+    authorUsername: text('authorUsername')
       .notNull()
       .references(() => users.authorUsername),
     eventId: integer('event_id')
