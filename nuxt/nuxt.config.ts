@@ -33,7 +33,7 @@ export default defineNuxtConfig({
           process.env.NODE_ENV == "production"
             ? "khPGZMLGaERG1xGRncMBkW4Y5pLrFBMy"
             : "RCVEiy1ybAm6XOrD0cxG2U486q5kHoqw",
-        redirect_url: "/groups",
+        redirect_url: "/groups/1",
       },
       gitMasterTag: gitDescribeSync().hash,
       version: "1.0.0",

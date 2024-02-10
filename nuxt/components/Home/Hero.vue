@@ -55,15 +55,11 @@
           Make friend group coordination easy.
         </h1>
         <p class="mt-6 text-lg leading-8 text-accent">
-           Ditch the group chat ping-pong. Gather empowers friend groups to coordinate meetups and experience Chicago-wide events.
-        </p>
-        <p class="mt-2 text-lg leading-8 text-accent">
-          Let's create a community of learning that is efficient, effective, and
-          most importantly, fun.
+          Life gets busy. Making time and decisions to recreate is not a trivial task for a variety of reasons. Most of us have busy schedules and exhausting occupations. Who has time or energy to plan and organize events -- and do so without creating conflicts?
         </p>
         <div class="mt-10 flex items-center gap-x-6">
           <NuxtLink
-            to="/groups"
+            to="/groups/1"
             class="rounded-md bg-secondary px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-secondary-focus focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
           >
             Get Started
@@ -81,7 +77,7 @@
             class="-m-2 rounded-xl bg-neutral/5 p-2 ring-1 ring-inset ring-neutral/10 lg:-m-4 lg:rounded-2xl lg:p-4"
           >
             <img
-              src="https://imagedelivery.net/5zM6Rdl2uV8Hmr9WxRh20g/ba4d9026-1a20-4272-1e91-95a5df85bb00/2xl"
+              src="https://imagedelivery.net/5zM6Rdl2uV8Hmr9WxRh20g/f0b3109b-47ad-486f-1340-699b3b8d8400/2xl"
               alt="App screenshot"
               width="2432"
               height="1442"
