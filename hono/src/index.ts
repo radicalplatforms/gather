@@ -3,8 +3,8 @@ import { Hono } from 'hono'
 import { logger } from 'hono/logger'
 import { prettyJSON } from 'hono/pretty-json'
 import { version } from '../package.json'
-import groups from './service/groups'
 import events from './service/events'
+import groups from './service/groups'
 
 const app = new Hono()
 
