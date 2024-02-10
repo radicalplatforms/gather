@@ -1,0 +1,25 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "description": "Crawler to scrape events data for gathr",
+  "main": "crawler.ts",
+  "scripts": {
+    "start": "ts-node crawler.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radicalplatforms/gather.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/radicalplatforms/gather/issues"
+  },
+  "homepage": "https://github.com/radicalplatforms/gather#readme",
+  "devDependencies": {
+    "puppeteer": "^20.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
